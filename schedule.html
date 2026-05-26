@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSQT2026 - Conference Schedule</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .navbar { background: white; border-radius: 60px; padding: 12px 24px; margin: 20px 0 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; list-style: none; }
+    .nav-menu li a { display: inline-block; padding: 10px 24px; font-weight: 600; text-decoration: none; color: #1e3a5f; border-radius: 40px; transition: all 0.2s ease; }
+    .nav-menu li a:hover, .nav-menu li a.active { background: #0b2b44; color: white; }
+    .page-header { background: rgba(255,255,255,0.95); border-radius: 32px; padding: 48px; margin: 40px 0; text-align: center; }
+    .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #0b2b44; }
+    .schedule-table { background: white; border-radius: 24px; overflow: hidden; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .day-header { background: #0b2b44; color: white; padding: 20px; font-size: 1.5rem; font-weight: 700; }
+    .schedule-row { display: grid; grid-template-columns: 150px 1fr; border-bottom: 1px solid #e0e0e0; }
+    .schedule-row:hover { background: #f5f5f5; }
+    .time { padding: 20px; font-weight: 600; background: #f8f9fa; border-right: 1px solid #e0e0e0; }
+    .event { padding: 20px; }
+    .event-title { font-weight: 700; margin-bottom: 5px; }
+    .event-location { color: #666; font-size: 0.85rem; }
+    .footer { text-align: center; padding: 28px 0; color: white; }
+    @media (max-width: 768px) { .schedule-row { grid-template-columns: 1fr; } .time { border-right: none; border-bottom: 1px solid #e0e0e0; } }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="navbar">
+    <ul class="nav-menu">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="committee.html">👥 Committee</a></li>
+      <li><a href="schedule.html" class="active">📅 Schedule</a></li>
+      <li><a href="speakers.html">🎤 Speakers</a></li>
+      <li><a href="registration.html">📝 Registration</a></li>
+    </ul>
+  </div>
 
+  <div class="page-header">
+    <h1 class="section-title">Conference Schedule</h1>
+    <p>May 14-16, 2026 | Bengaluru, India</p>
+  </div>
+
+  <div class="schedule-table">
+    <div class="day-header">📅 Day 1 - May 14, 2026 (Thursday)</div>
+    <div class="schedule-row"><div class="time">09:00 - 10:00</div><div class="event"><div class="event-title">Registration & Welcome Coffee</div><div class="event-location">Main Hall Lobby</div></div></div>
+    <div class="schedule-row"><div class="time">10:00 - 11:00</div><div class="event"><div class="event-title">Inaugural Session & Keynote: Prof. Anton Zeilinger</div><div class="event-location">Grand Auditorium</div></div></div>
+    <div class="schedule-row"><div class="time">11:00 - 12:30</div><div class="event"><div class="event-title">Technical Session 1: Quantum Computing Hardware</div><div class="event-location">Hall A</div></div></div>
+    <div class="schedule-row"><div class="time">12:30 - 14:00</div><div class="event"><div class="event-title">Lunch Break & Poster Setup</div><div class="event-location">Dining Hall</div></div></div>
+    <div class="schedule-row"><div class="time">14:00 - 15:30</div><div class="event"><div class="event-title">Technical Session 2: Quantum Algorithms</div><div class="event-location">Hall B</div></div></div>
+    <div class="schedule-row"><div class="time">16:00 - 17:30</div><div class="event"><div class="event-title">Panel Discussion: Future of Quantum Technologies</div><div class="event-location">Grand Auditorium</div></div></div>
+  </div>
+
+  <div class="schedule-table">
+    <div class="day-header">📅 Day 2 - May 15, 2026 (Friday)</div>
+    <div class="schedule-row"><div class="time">09:30 - 10:30</div><div class="event"><div class="event-title">Keynote: Dr. Michelle Simmons</div><div class="event-location">Grand Auditorium</div></div></div>
+    <div class="schedule-row"><div class="time">11:00 - 12:30</div><div class="event"><div class="event-title">Technical Session 3: Quantum Communication</div><div class="event-location">Hall A</div></div></div>
+    <div class="schedule-row"><div class="time">14:00 - 15:30</div><div class="event"><div class="event-title">Industry Symposium</div><div class="event-location">Hall C</div></div></div>
+    <div class="schedule-row"><div class="time">16:00 - 18:00</div><div class="event"><div class="event-title">Poster Session & Networking Reception</div><div class="event-location">Exhibition Area</div></div></div>
+  </div>
+
+  <div class="schedule-table">
+    <div class="day-header">📅 Day 3 - May 16, 2026 (Saturday)</div>
+    <div class="schedule-row"><div class="time">09:30 - 10:30</div><div class="event"><div class="event-title">Keynote: Prof. John Preskill</div><div class="event-location">Grand Auditorium</div></div></div>
+    <div class="schedule-row"><div class="time">11:00 - 12:30</div><div class="event"><div class="event-title">Technical Session 4: Quantum Machine Learning</div><div class="event-location">Hall B</div></div></div>
+    <div class="schedule-row"><div class="time">14:00 - 15:30</div><div class="event"><div class="event-title">Closing Ceremony & Awards</div><div class="event-location">Grand Auditorium</div></div></div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 QSQT2026 Conference</p>
+  </footer>
+</div>
+</body>
+</html>
