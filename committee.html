@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSQT2026 - Organizing Committee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-attachment: fixed;
+      color: #1a2634;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Navigation Menu */
+    .navbar {
+      background: white;
+      border-radius: 60px;
+      padding: 12px 24px;
+      margin: 20px 0 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .nav-menu li a {
+      display: inline-block;
+      padding: 10px 24px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #1e3a5f;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-menu li a:hover, .nav-menu li a.active {
+      background: #0b2b44;
+      color: white;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 32px;
+      padding: 48px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #0b2b44;
+    }
+
+    /* Committee Sections */
+    .committee-section {
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-heading {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b2b44;
+      border-left: 6px solid #2c7da0;
+      padding-left: 20px;
+      margin-bottom: 30px;
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    /* Member Card */
+    .member-card {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #e9edf2;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .member-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #2c7da0;
+      background: #e0e8ff;
+    }
+
+    .member-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0b2b44;
+    }
+
+    .member-designation {
+      color: #2c7da0;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .member-affiliation {
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    /* Center Director Special Card */
+    .director-card {
+      max-width: 350px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+      border: 2px solid #2c7da0;
+    }
+
+    .director-card .member-name {
+      font-size: 1.5rem;
+      color: #1e5a7a;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 28px 0;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .committee-grid {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 0 20px;
+      }
+      .page-header {
+        padding: 30px 20px;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Navigation Menu -->
+  <div class="navbar">
+    <ul class="nav-menu">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="committee.html" class="active">👥 Committee</a></li>
+      <li><a href="schedule.html">📅 Schedule</a></li>
+      <li><a href="speakers.html">🎤 Speakers</a></li>
+      <li><a href="registration.html">📝 Registration</a></li>
+    </ul>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="section-title">Organizing Committee</h1>
+    <p>Meet the dedicated team behind QSQT2026 Conference</p>
+  </div>
+
+  <!-- 1. CONVENOR (Center Director) -->
+  <div class="committee-section">
+    <h2 class="section-heading">🎯 Conference Convenor</h2>
+    <div class="committee-grid" style="grid-template-columns: 1fr;">
+      <div class="member-card director-card">
+        <img src="images/prasanta-kumar-panigrahi.jpg" alt="Prof. Prasanta Kumar Panigrahi" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+P.K.+Panigrahi'">
+        <h3 class="member-name">Prof. Prasanta Kumar Panigrahi</h3>
+        <div class="member-designation">Director, Centre for Quantum Science and Technology (CQST)</div>
+        <div class="member-affiliation">Siksha 'O' Anusandhan University, Odisha, India</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PATRONS -->
+  <div class="committee-section">
+    <h2 class="section-heading">👑 Patrons</h2>
+    <div class="committee-grid">
+      <div class="member-card">
+        <img src="images/pradipta-kumar-nanda.jpg" alt="Prof. Pradipta Kumar Nanda" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=VC+SOA'">
+        <h3 class="member-name">Prof. Pradipta Kumar Nanda</h3>
+        <div class="member-designation">Vice Chancellor, SOA University</div>
+        <div class="member-affiliation">Siksha 'O' Anusandhan University</div>
+      </div>
+      <div class="member-card">
+        <img src="images/manas-ranjan-mallik.jpg" alt="Prof. Manas Ranjan Mallik" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+M.R.+Mallik'">
+        <h3 class="member-name">Prof. Manas Ranjan Mallik</h3>
+        <div class="member-designation">Director, ITER</div>
+        <div class="member-affiliation">Institute of Technical Education & Research, SOA</div>
+      </div>
+      <div class="member-card">
+        <img src="images/renu-sharma.jpg" alt="Dr. Renu Sharma" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+R.+Sharma'">
+        <h3 class="member-name">Dr. Renu Sharma</h3>
+        <div class="member-designation">Additional Dean, Student Affairs</div>
+        <div class="member-affiliation">Siksha 'O' Anusandhan University</div>
+      </div>
+      <div class="member-card">
+        <img src="images/jayanta-kumar-nath.jpg" alt="Prof. Jayanta Kumar Nath" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+J.K.+Nath'">
+        <h3 class="member-name">Prof. Jayanta Kumar Nath</h3>
+        <div class="member-designation">Dean, Research & Development</div>
+        <div class="member-affiliation">Siksha 'O' Anusandhan University</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. ORGANIZERS (Professors & Assistant Professors till Sushanta Kumar Pal) -->
+  <div class="committee-section">
+    <h2 class="section-heading">👨‍🏫 Organizing Committee (Faculty)</h2>
+    <div class="committee-grid">
+      <div class="member-card">
+        <img src="images/amar-nath-sah.jpg" alt="Dr. Amar Nath Sah" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+A.N.+Sah'">
+        <h3 class="member-name">Dr. Amar Nath Sah</h3>
+        <div class="member-designation">Organizing Committee Member</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/gyana-ranjan-sahoo.jpg" alt="Dr. Gyana Ranjan Sahoo" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+G.R.+Sahoo'">
+        <h3 class="member-name">Dr. Gyana Ranjan Sahoo</h3>
+        <div class="member-designation">Organizing Committee Member</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/suman-chand.jpg" alt="Dr. Suman Chand" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+S.+Chand'">
+        <h3 class="member-name">Dr. Suman Chand</h3>
+        <div class="member-designation">Assistant Professor</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/sushanta-kumar-pal.jpg" alt="Dr. Sushanta Kumar Pal" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+S.K.+Pal'">
+        <h3 class="member-name">Dr. Sushanta Kumar Pal</h3>
+        <div class="member-designation">Assistant Professor</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. POST DOCTORAL FELLOWS -->
+  <div class="committee-section">
+    <h2 class="section-heading">🔬 Post Doctoral Fellows</h2>
+    <div class="committee-grid">
+      <div class="member-card">
+        <img src="images/abdul-qadirul-batin.jpg" alt="Dr. Abdul Qadirul Batin" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+A.Q.+Batin'">
+        <h3 class="member-name">Dr. Abdul Qadirul Batin</h3>
+        <div class="member-designation">Post Doctoral Fellow</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/arman.jpg" alt="Dr. Arman" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Dr.+Arman'">
+        <h3 class="member-name">Dr. Arman</h3>
+        <div class="member-designation">Post Doctoral Fellow</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. RESEARCH SCHOLARS -->
+  <div class="committee-section">
+    <h2 class="section-heading">🎓 Research Scholars</h2>
+    <div class="committee-grid">
+      <div class="member-card">
+        <img src="images/leena-barshilia.jpg" alt="Leena Barshilia" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Leena'">
+        <h3 class="member-name">Leena Barshilia</h3>
+        <div class="member-designation">Research Scholar</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/shreetam-dash.jpg" alt="Shreetam Dash" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Shreetam'">
+        <h3 class="member-name">Shreetam Dash</h3>
+        <div class="member-designation">Research Scholar</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. PROJECT STUDENTS -->
+  <div class="committee-section">
+    <h2 class="section-heading">📚 Project Students</h2>
+    <div class="committee-grid">
+      <div class="member-card">
+        <img src="images/arghyabindu-patra.jpg" alt="Arghyabindu Patra" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Arghyabindu'">
+        <h3 class="member-name">Arghyabindu Patra</h3>
+        <div class="member-designation">Project Student</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/ipsa-tripathy.jpg" alt="Ipsa Tripathy" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Ipsa'">
+        <h3 class="member-name">Ipsa Tripathy</h3>
+        <div class="member-designation">Project Student</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/soumik-samanta.jpg" alt="Soumik Samanta" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Soumik'">
+        <h3 class="member-name">Soumik Samanta</h3>
+        <div class="member-designation">Project Student</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+      <div class="member-card">
+        <img src="images/ujjal-jana.jpg" alt="Ujjal Jana" class="member-img" onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=Ujjal'">
+        <h3 class="member-name">Ujjal Jana</h3>
+        <div class="member-designation">Project Student</div>
+        <div class="member-affiliation">Centre for Quantum Science & Technology</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 QSQT2026 Conference | Centre for Quantum Science and Technology (CQST), SOA, Odisha, India</p>
+  </footer>
+</div>
+</body>
+</html>
