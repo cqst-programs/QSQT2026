@@ -26,7 +26,6 @@
       padding: 0 32px;
     }
 
-    /* Navigation Menu */
     .navbar {
       background: white;
       border-radius: 60px;
@@ -59,7 +58,6 @@
       color: white;
     }
 
-    /* Page Header */
     .page-header {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 32px;
@@ -80,7 +78,6 @@
       color: #555;
     }
 
-    /* Speaker Sections */
     .speaker-section {
       background: white;
       border-radius: 32px;
@@ -105,7 +102,6 @@
       margin-top: 20px;
     }
 
-    /* Speaker Card */
     .speaker-card {
       background: #f8fafc;
       border-radius: 20px;
@@ -150,7 +146,6 @@
       line-height: 1.4;
     }
 
-    /* Industry card highlight */
     .industry-card {
       background: linear-gradient(135deg, #f8fafc 0%, #eef5ff 100%);
       border-left: 3px solid #ff6b6b;
@@ -162,7 +157,6 @@
       margin-bottom: 10px;
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       padding: 28px 0;
@@ -191,7 +185,6 @@
 <body>
 
 <div class="container">
-  <!-- Navigation Menu -->
   <div class="navbar">
     <ul class="nav-menu">
       <li><a href="index.html">🏠 Home</a></li>
@@ -202,26 +195,19 @@
     </ul>
   </div>
 
-  <!-- Page Header -->
   <div class="page-header">
     <h1 class="section-title">Eminent Speakers</h1>
     <p class="page-subtitle">World-renowned experts in Quantum Science and Technology</p>
   </div>
 
-  <!-- ACADEMIC SPEAKERS SECTION -->
   <div class="speaker-section">
     <h2 class="section-heading">🎓 Academic Speakers</h2>
-    <div class="speakers-grid" id="academic-speakers-grid">
-      <!-- Speakers will be populated by JavaScript -->
-    </div>
+    <div class="speakers-grid" id="academic-speakers-grid"></div>
   </div>
 
-  <!-- INDUSTRY SPEAKERS SECTION -->
   <div class="speaker-section">
     <h2 class="section-heading">🏢 Industry Speakers</h2>
-    <div class="speakers-grid" id="industry-speakers-grid">
-      <!-- Industry speakers will be populated by JavaScript -->
-    </div>
+    <div class="speakers-grid" id="industry-speakers-grid"></div>
   </div>
 
   <footer class="footer">
@@ -230,92 +216,103 @@
 </div>
 
 <script>
-  // Academic Speakers Data with affiliations
-  const academicSpeakers = [
-    { name: "Girish Agarwal", designation: "Professor", affiliation: "Texas A&M University, USA (Fellow of the Royal Society, UK)" },
-    { name: "P. K. Nanda", designation: "Professor", affiliation: "Vice Chancellor, Siksha 'O' Anusandhan University, Odisha" },
-    { name: "Franco Nori", designation: "Professor", affiliation: "RIKEN, Japan & University of Michigan, USA" },
-    { name: "Sougato Bose", designation: "Professor", affiliation: "University College London, UK" },
-    { name: "Ray Kuang Lee", designation: "Professor", affiliation: "National Tsing Hua University, Taiwan" },
-    { name: "Raymond Ooi", designation: "Professor", affiliation: "University of Malaya, Malaysia (Fellow of Optica)" },
-    { name: "Alex Matzkin", designation: "Professor", affiliation: "CNRS, France" },
-    { name: "Gautam Vemuri", designation: "Professor", affiliation: "Indiana University, Indianapolis, USA" },
-    { name: "Emanuele Dalla Torre", designation: "Professor", affiliation: "Bar-Ilan University, Israel" },
-    { name: "R. P. Singh", designation: "Professor", affiliation: "Azoth Biotech Pvt. Ltd, Noida, India" },
-    { name: "Lakshmi Bala", designation: "Professor", affiliation: "Indian Institute of Technology Madras, Chennai" },
-    { name: "Urbasi Sinha", designation: "Professor", affiliation: "Raman Research Institute, Bangalore" },
-    { name: "Aditi Sen De", designation: "Professor", affiliation: "Harish-Chandra Research Institute, Prayagraj" },
-    { name: "Kasturi Saha", designation: "Professor", affiliation: "Indian Institute of Technology Bombay" },
-    { name: "Alok Pan", designation: "Professor", affiliation: "Institute of Physics, Bhubaneswar" },
-    { name: "Anirban Pathak", designation: "Professor", affiliation: "Jaypee Institute of Information Technology, Noida" },
-    { name: "Prabha Mandayam", designation: "Professor", affiliation: "Indian Institute of Technology Madras" },
-    { name: "Ritabrata Sengupta", designation: "Professor", affiliation: "Indian Institute of Technology Kharagpur" },
-    { name: "Archan Majumdar", designation: "Professor", affiliation: "Saha Institute of Nuclear Physics, Kolkata" },
-    { name: "Tapan Mishra", designation: "Professor", affiliation: "Indian Institute of Technology Guwahati" },
-    { name: "Hiranmaya Mishra", designation: "Professor", affiliation: "Physical Research Laboratory, Ahmedabad" },
-    { name: "Sudhanwa Patra", designation: "Professor", affiliation: "Indian Institute of Technology Bhilai" },
-    { name: "Poonam Mehta", designation: "Professor", affiliation: "Jawaharlal Nehru University, New Delhi" },
-    { name: "Nirmalya Ghosh", designation: "Professor", affiliation: "Indian Institute of Science Education and Research Kolkata" },
-    { name: "Siddhartha Lal", designation: "Professor", affiliation: "Indian Institute of Science Education and Research Kolkata" },
-    { name: "Sourin Das", designation: "Professor", affiliation: "Indian Institute of Science Education and Research Kolkata" },
-    { name: "Sukanta Tripathy", designation: "Professor", affiliation: "Institute of Physics, Bhubaneswar" },
-    { name: "Bhanu Das", designation: "Professor", affiliation: "Siksha 'O' Anusandhan University, Odisha" },
-    { name: "Asoka Biswas", designation: "Professor", affiliation: "Indian Institute of Technology Jodhpur" },
-    { name: "Shubhrangshu Dasgupta", designation: "Professor", affiliation: "Indian Institute of Science Education and Research Mohali" },
-    { name: "Debashis Saha", designation: "Professor", affiliation: "Indian Institute of Science Education and Research Thiruvananthapuram" },
-    { name: "Roopayan Ghosh", designation: "Professor", affiliation: "Indian Institute of Technology Kanpur" },
-    { name: "Shraddha Sharma", designation: "Professor", affiliation: "University of Delhi" },
-    { name: "Vivek Vyas", designation: "Professor", affiliation: "Space Applications Centre, ISRO, Ahmedabad" },
-    { name: "Suranjana Ghosh", designation: "Professor", affiliation: "University of Calcutta" }
-  ];
+// Academic Speakers Data
+var academicSpeakers = [
+  { name: "Girish Agarwal", designation: "Professor", affiliation: "Texas A&M University, USA" },
+  { name: "P. K. Nanda", designation: "Professor", affiliation: "Vice Chancellor, SOA University, Odisha" },
+  { name: "Franco Nori", designation: "Professor", affiliation: "RIKEN, Japan & University of Michigan, USA" },
+  { name: "Sougato Bose", designation: "Professor", affiliation: "University College London, UK" },
+  { name: "Ray Kuang Lee", designation: "Professor", affiliation: "National Tsing Hua University, Taiwan" },
+  { name: "Raymond Ooi", designation: "Professor", affiliation: "University of Malaya, Malaysia" },
+  { name: "Alex Matzkin", designation: "Professor", affiliation: "CNRS, France" },
+  { name: "Gautam Vemuri", designation: "Professor", affiliation: "Indiana University, USA" },
+  { name: "Emanuele Dalla Torre", designation: "Professor", affiliation: "Bar-Ilan University, Israel" },
+  { name: "R. P. Singh", designation: "Professor", affiliation: "Azoth Biotech Pvt. Ltd, Noida" },
+  { name: "Lakshmi Bala", designation: "Professor", affiliation: "IIT Madras" },
+  { name: "Urbasi Sinha", designation: "Professor", affiliation: "Raman Research Institute, Bangalore" },
+  { name: "Aditi Sen De", designation: "Professor", affiliation: "Harish-Chandra Research Institute" },
+  { name: "Kasturi Saha", designation: "Professor", affiliation: "IIT Bombay" },
+  { name: "Alok Pan", designation: "Professor", affiliation: "Institute of Physics, Bhubaneswar" },
+  { name: "Anirban Pathak", designation: "Professor", affiliation: "Jaypee Institute of IT, Noida" },
+  { name: "Prabha Mandayam", designation: "Professor", affiliation: "IIT Madras" },
+  { name: "Ritabrata Sengupta", designation: "Professor", affiliation: "IIT Kharagpur" },
+  { name: "Archan Majumdar", designation: "Professor", affiliation: "SINP, Kolkata" },
+  { name: "Tapan Mishra", designation: "Professor", affiliation: "IIT Guwahati" },
+  { name: "Hiranmaya Mishra", designation: "Professor", affiliation: "Physical Research Laboratory" },
+  { name: "Sudhanwa Patra", designation: "Professor", affiliation: "IIT Bhilai" },
+  { name: "Poonam Mehta", designation: "Professor", affiliation: "JNU, New Delhi" },
+  { name: "Nirmalya Ghosh", designation: "Professor", affiliation: "IISER Kolkata" },
+  { name: "Siddhartha Lal", designation: "Professor", affiliation: "IISER Kolkata" },
+  { name: "Sourin Das", designation: "Professor", affiliation: "IISER Kolkata" },
+  { name: "Sukanta Tripathy", designation: "Professor", affiliation: "Institute of Physics, Bhubaneswar" },
+  { name: "Bhanu Das", designation: "Professor", affiliation: "SOA University, Odisha" },
+  { name: "Asoka Biswas", designation: "Professor", affiliation: "IIT Jodhpur" },
+  { name: "Shubhrangshu Dasgupta", designation: "Professor", affiliation: "IISER Mohali" },
+  { name: "Debashis Saha", designation: "Professor", affiliation: "IISER Thiruvananthapuram" },
+  { name: "Roopayan Ghosh", designation: "Professor", affiliation: "IIT Kanpur" },
+  { name: "Shraddha Sharma", designation: "Professor", affiliation: "University of Delhi" },
+  { name: "Vivek Vyas", designation: "Professor", affiliation: "ISRO, Ahmedabad" },
+  { name: "Suranjana Ghosh", designation: "Professor", affiliation: "University of Calcutta" }
+];
 
-  // Industry Speakers Data
-  const industrySpeakers = [
-    { name: "L. Venkata Subramaniam", designation: "Dr.", affiliation: "CEO Qubit Force, Amaravati" }
-    { name: "Sristy Agrawal", designation: "Dr.", affiliation: "Quantum Computing Lead, IBM Research" },
-    { name: "Ritajit Majumdar", designation: "Dr.", affiliation: "Quantum Algorithm Researcher, IBM Quantum" },
-    { name: "Kumar Gautam", designation: "Dr.", affiliation: "Quantum AI Specialist, Google Research" },
-    { name: "Rajendra Prasad", designation: "Dr.", affiliation: "Quantum Technologies, Amazon Braket" }
-  ];
+// Industry Speakers Data (with your new speaker added)
+var industrySpeakers = [
+  { name: "Sristy Agrawal", designation: "Dr.", affiliation: "Quantum Computing Lead, IBM Research" },
+  { name: "Ritajit Majumdar", designation: "Dr.", affiliation: "Quantum Algorithm Researcher, IBM Quantum" },
+  { name: "Kumar Gautam", designation: "Dr.", affiliation: "Quantum AI Specialist, Google Research" },
+  { name: "Rajendra Prasad", designation: "Dr.", affiliation: "Quantum Technologies, Amazon Braket" },
+  { name: "L. Venkata Subramaniam", designation: "Dr.", affiliation: "CEO, Qubit Force, Amaravati" }
+];
 
-  // Function to create a speaker card
-  function createSpeakerCard(speaker, isIndustry = false) {
-    // Create a filename-friendly name
-    const imageName = speaker.name.toLowerCase().replace(/ /g, '-').replace(/\./g, '');
-    
-    return `
-      <div class="speaker-card ${isIndustry ? 'industry-card' : ''}">
-        ${isIndustry ? '<div class="industry-icon"><i class="fas fa-building"></i></div>' : ''}
-        <img src="images/speakers/${imageName}.jpg" 
-             alt="${speaker.name}" 
-             class="speaker-img"
-             onerror="this.src='https://placehold.co/400x400/2c7da0/white?text=${encodeURIComponent(speaker.name.split(' ').map(n => n[0]).join(''))}'">
-        <h3 class="speaker-name">${speaker.name}</h3>
-        <div class="speaker-designation">${speaker.designation}</div>
-        <div class="speaker-affiliation">${speaker.affiliation}</div>
-      </div>
-    `;
+// Function to create speaker card
+function createSpeakerCard(speaker, isIndustry) {
+  var initial = speaker.name.charAt(0);
+  var imagePath = "images/speakers/" + speaker.name.toLowerCase().replace(/ /g, '-').replace(/\./g, '') + ".jpg";
+  
+  var industryIcon = "";
+  if (isIndustry) {
+    industryIcon = '<div class="industry-icon"><i class="fas fa-building"></i></div>';
   }
-
-  // Populate Academic Speakers
-  function populateAcademicSpeakers() {
-    const grid = document.getElementById('academic-speakers-grid');
-    if (grid) {
-      grid.innerHTML = academicSpeakers.map(speaker => createSpeakerCard(speaker, false)).join('');
-    }
+  
+  var industryClass = "";
+  if (isIndustry) {
+    industryClass = "industry-card";
   }
+  
+  return '<div class="speaker-card ' + industryClass + '">' +
+    industryIcon +
+    '<img src="' + imagePath + '" alt="' + speaker.name + '" class="speaker-img" onerror="this.src=\'https://placehold.co/400x400/2c7da0/white?text=' + initial + '\'">' +
+    '<h3 class="speaker-name">' + speaker.name + '</h3>' +
+    '<div class="speaker-designation">' + speaker.designation + '</div>' +
+    '<div class="speaker-affiliation">' + speaker.affiliation + '</div>' +
+    '</div>';
+}
 
-  // Populate Industry Speakers
-  function populateIndustrySpeakers() {
-    const grid = document.getElementById('industry-speakers-grid');
-    if (grid) {
-      grid.innerHTML = industrySpeakers.map(speaker => createSpeakerCard(speaker, true)).join('');
-    }
+// Populate academic speakers
+var academicGrid = document.getElementById('academic-speakers-grid');
+if (academicGrid) {
+  var academicHTML = "";
+  for (var i = 0; i < academicSpeakers.length; i++) {
+    academicHTML = academicHTML + createSpeakerCard(academicSpeakers[i], false);
   }
+  academicGrid.innerHTML = academicHTML;
+}
 
-  // Initialize both sections
-  populateAcademicSpeakers();
-  populateIndustrySpeakers();
+// Populate industry speakers
+var industryGrid = document.getElementById('industry-speakers-grid');
+if (industryGrid) {
+  var industryHTML = "";
+  for (var i = 0; i < industrySpeakers.length; i++) {
+    industryHTML = industryHTML + createSpeakerCard(industrySpeakers[i], true);
+  }
+  industryGrid.innerHTML = industryHTML;
+}
+
+// Debug message to confirm JavaScript is working
+console.log("Speakers page loaded successfully!");
+console.log("Total Academic Speakers:", academicSpeakers.length);
+console.log("Total Industry Speakers:", industrySpeakers.length);
 </script>
+
 </body>
 </html>
