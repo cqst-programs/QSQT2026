@@ -16,16 +16,14 @@
     .nav-menu li a:hover, .nav-menu li a.active { background: #0b2b44; color: white; }
     .page-header { background: rgba(255,255,255,0.95); border-radius: 32px; padding: 48px; margin: 40px 0; text-align: center; }
     .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #0b2b44; }
-    .schedule-table { background: white; border-radius: 24px; overflow: hidden; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .day-header { background: #0b2b44; color: white; padding: 20px; font-size: 1.5rem; font-weight: 700; }
-    .schedule-row { display: grid; grid-template-columns: 150px 1fr; border-bottom: 1px solid #e0e0e0; }
-    .schedule-row:hover { background: #f5f5f5; }
-    .time { padding: 20px; font-weight: 600; background: #f8f9fa; border-right: 1px solid #e0e0e0; }
-    .event { padding: 20px; }
-    .event-title { font-weight: 700; margin-bottom: 5px; }
-    .event-location { color: #666; font-size: 0.85rem; }
+    .page-subtitle { font-size: 1.1rem; color: #555; margin-top: 8px; }
+    .info-message { background: white; border-radius: 24px; padding: 60px 40px; margin: 40px 0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .info-icon { font-size: 5rem; color: #2c7da0; margin-bottom: 20px; }
+    .info-title { font-size: 2rem; font-weight: 700; color: #0b2b44; margin-bottom: 16px; }
+    .info-text { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
+    .info-note { background: #fff8e7; border-left: 4px solid #ffc107; padding: 20px; margin-top: 30px; border-radius: 16px; text-align: left; }
     .footer { text-align: center; padding: 28px 0; color: white; }
-    @media (max-width: 768px) { .schedule-row { grid-template-columns: 1fr; } .time { border-right: none; border-bottom: 1px solid #e0e0e0; } }
+    @media (max-width: 768px) { .container { padding: 0 20px; } .page-header { padding: 30px 20px; } .section-title { font-size: 1.8rem; } .info-title { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
@@ -42,36 +40,25 @@
 
   <div class="page-header">
     <h1 class="section-title">Conference Schedule</h1>
-    <p>May 14-16, 2026 | Bengaluru, India</p>
+    <p class="page-subtitle">29th June - 15th July, 2026 | SOA, Odisha, India</p>
   </div>
 
-  <div class="schedule-table">
-    <div class="day-header">📅 Day 1 - May 14, 2026 (Thursday)</div>
-    <div class="schedule-row"><div class="time">09:00 - 10:00</div><div class="event"><div class="event-title">Registration & Welcome Coffee</div><div class="event-location">Main Hall Lobby</div></div></div>
-    <div class="schedule-row"><div class="time">10:00 - 11:00</div><div class="event"><div class="event-title">Inaugural Session & Keynote: Prof. Anton Zeilinger</div><div class="event-location">Grand Auditorium</div></div></div>
-    <div class="schedule-row"><div class="time">11:00 - 12:30</div><div class="event"><div class="event-title">Technical Session 1: Quantum Computing Hardware</div><div class="event-location">Hall A</div></div></div>
-    <div class="schedule-row"><div class="time">12:30 - 14:00</div><div class="event"><div class="event-title">Lunch Break & Poster Setup</div><div class="event-location">Dining Hall</div></div></div>
-    <div class="schedule-row"><div class="time">14:00 - 15:30</div><div class="event"><div class="event-title">Technical Session 2: Quantum Algorithms</div><div class="event-location">Hall B</div></div></div>
-    <div class="schedule-row"><div class="time">16:00 - 17:30</div><div class="event"><div class="event-title">Panel Discussion: Future of Quantum Technologies</div><div class="event-location">Grand Auditorium</div></div></div>
-  </div>
-
-  <div class="schedule-table">
-    <div class="day-header">📅 Day 2 - May 15, 2026 (Friday)</div>
-    <div class="schedule-row"><div class="time">09:30 - 10:30</div><div class="event"><div class="event-title">Keynote: Dr. Michelle Simmons</div><div class="event-location">Grand Auditorium</div></div></div>
-    <div class="schedule-row"><div class="time">11:00 - 12:30</div><div class="event"><div class="event-title">Technical Session 3: Quantum Communication</div><div class="event-location">Hall A</div></div></div>
-    <div class="schedule-row"><div class="time">14:00 - 15:30</div><div class="event"><div class="event-title">Industry Symposium</div><div class="event-location">Hall C</div></div></div>
-    <div class="schedule-row"><div class="time">16:00 - 18:00</div><div class="event"><div class="event-title">Poster Session & Networking Reception</div><div class="event-location">Exhibition Area</div></div></div>
-  </div>
-
-  <div class="schedule-table">
-    <div class="day-header">📅 Day 3 - May 16, 2026 (Saturday)</div>
-    <div class="schedule-row"><div class="time">09:30 - 10:30</div><div class="event"><div class="event-title">Keynote: Prof. John Preskill</div><div class="event-location">Grand Auditorium</div></div></div>
-    <div class="schedule-row"><div class="time">11:00 - 12:30</div><div class="event"><div class="event-title">Technical Session 4: Quantum Machine Learning</div><div class="event-location">Hall B</div></div></div>
-    <div class="schedule-row"><div class="time">14:00 - 15:30</div><div class="event"><div class="event-title">Closing Ceremony & Awards</div><div class="event-location">Grand Auditorium</div></div></div>
+  <div class="info-message">
+    <div class="info-icon">
+      <i class="fas fa-clock"></i>
+    </div>
+    <h2 class="info-title">Schedule To Be Announced</h2>
+    <p class="info-text">The detailed conference schedule including session timings,<br>speaker slots, and parallel tracks will be updated soon.</p>
+    
+    <div class="info-note">
+      <i class="fas fa-envelope" style="margin-right: 10px; color: #ffc107;"></i>
+      <strong>Stay Updated:</strong> Please check back regularly or subscribe to our mailing list at 
+      <strong>programs.cqst@gmail.com</strong> for the latest updates on the conference schedule.
+    </div>
   </div>
 
   <footer class="footer">
-    <p>© 2025 QSQT2026 Conference</p>
+    <p>© 2026 QSQT2026 Conference & FDP | Centre for Quantum Science and Technology (CQST), SOA, Odisha, India</p>
   </footer>
 </div>
 </body>
