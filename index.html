@@ -114,6 +114,51 @@
       font-weight: 500;
     }
 
+    /* Meeting Link Box */
+    .meeting-link-box {
+      background: linear-gradient(135deg, #1a5a78 0%, #0b2b44 100%);
+      border-radius: 20px;
+      padding: 20px 30px;
+      margin: 20px 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border: 2px solid #ffd700;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .meeting-link-box i {
+      font-size: 1.8rem;
+      color: #ffd700;
+    }
+
+    .meeting-link-box .meeting-label {
+      font-weight: 600;
+      color: #ffd700;
+      font-size: 1.1rem;
+    }
+
+    .meeting-link-box a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.3s ease;
+      word-break: break-all;
+    }
+
+    .meeting-link-box a:hover {
+      background: rgba(255, 215, 0, 0.25);
+      border-color: #ffd700;
+      transform: scale(1.02);
+    }
+
     /* Two Column Layout for About Sections */
     .two-columns {
       display: flex;
@@ -287,6 +332,8 @@
       .logo-img { max-height: 55px; }
       .two-columns { flex-direction: column; }
       .card-title { font-size: 1.4rem; }
+      .meeting-link-box { flex-direction: column; text-align: center; padding: 20px; }
+      .meeting-link-box a { font-size: 0.85rem; word-break: break-all; }
     }
   </style>
 </head>
@@ -324,6 +371,15 @@
     <div class="program-name-main" style="font-size: 1.5rem;"> Workshop on Quantum Science and Quantum Technology (QSQT)</div>
     <div class="program-sub">29th June - 15th July, 2026</div>
     <div class="program-location">Siksha 'O' Anusandhan Deemed to be University, Odisha, India</div>
+  </div>
+
+  <!-- MEETING LINK SECTION -->
+  <div class="meeting-link-box">
+    <i class="fas fa-video"></i>
+    <span class="meeting-label">🔗 Meeting Link:</span>
+    <a href="https://teams.microsoft.com/meet/46086148117821?p=SqIJMakqs378qjDjoS" target="_blank">
+      https://teams.microsoft.com/meet/46086148117821?p=SqIJMakqs378qjDjoS
+    </a>
   </div>
 
   <!-- TWO ABOUT SECTIONS SIDE BY SIDE -->
