@@ -3,27 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QSQT2026 - Workshop Schedule</title>
+  <title>QSQT2026 - Conference Schedule</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-    .navbar { background: white; border-radius: 60px; padding: 12px 24px; margin: 20px 0 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    
+    .navbar { background: white; border-radius: 60px; padding: 12px 24px; margin: 20px 0 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
     .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; list-style: none; }
     .nav-menu li a { display: inline-block; padding: 10px 24px; font-weight: 600; text-decoration: none; color: #1e3a5f; border-radius: 40px; transition: all 0.2s ease; }
     .nav-menu li a:hover, .nav-menu li a.active { background: #0b2b44; color: white; }
+    
     .page-header { background: rgba(255,255,255,0.95); border-radius: 32px; padding: 48px; margin: 40px 0; text-align: center; }
     .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #0b2b44; }
     .page-subtitle { font-size: 1.1rem; color: #555; margin-top: 8px; }
-    .info-message { background: white; border-radius: 24px; padding: 60px 40px; margin: 40px 0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .info-icon { font-size: 5rem; color: #2c7da0; margin-bottom: 20px; }
-    .info-title { font-size: 2rem; font-weight: 700; color: #0b2b44; margin-bottom: 16px; }
-    .info-text { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
-    .info-note { background: #fff8e7; border-left: 4px solid #ffc107; padding: 20px; margin-top: 30px; border-radius: 16px; text-align: left; }
+    
+    .schedule-info { background: white; border-radius: 24px; padding: 30px 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .schedule-info p { font-size: 1rem; color: #555; line-height: 1.6; }
+    .schedule-info i { color: #2c7da0; margin-right: 8px; }
+    
+    .schedule-table { background: white; border-radius: 24px; overflow: hidden; margin: 30px 0 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .day-header { background: #0b2b44; color: white; padding: 20px; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+    .day-header i { color: #ffd700; }
+    
+    .schedule-row { display: grid; grid-template-columns: 160px 1fr; border-bottom: 1px solid #e0e0e0; }
+    .schedule-row:hover { background: #f5f5f5; }
+    .time { padding: 20px; font-weight: 600; background: #f8f9fa; border-right: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
+    .time i { color: #2c7da0; }
+    .event { padding: 20px; }
+    .event-title { font-weight: 700; margin-bottom: 5px; }
+    .event-speaker { color: #2c7da0; font-weight: 600; margin-bottom: 3px; }
+    .event-location { color: #666; font-size: 0.85rem; }
+    
+    .confirmed-badge { display: inline-block; background: #28a745; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-left: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .to-be-announced { color: #ffc107; font-weight: 600; }
+    
+    .more-sessions { background: white; border-radius: 24px; padding: 40px; margin: 30px 0 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px dashed #cbd5e6; }
+    .more-sessions i { font-size: 3rem; color: #2c7da0; margin-bottom: 20px; }
+    .more-sessions h3 { font-size: 1.5rem; color: #0b2b44; margin-bottom: 10px; }
+    .more-sessions p { color: #666; }
+    
     .footer { text-align: center; padding: 28px 0; color: white; }
-    @media (max-width: 768px) { .container { padding: 0 20px; } .page-header { padding: 30px 20px; } .section-title { font-size: 1.8rem; } .info-title { font-size: 1.5rem; } }
+    
+    @media (max-width: 768px) {
+      .schedule-row { grid-template-columns: 1fr; }
+      .time { border-right: none; border-bottom: 1px solid #e0e0e0; }
+      .container { padding: 0 20px; }
+      .page-header { padding: 30px 20px; }
+      .section-title { font-size: 1.8rem; }
+      .schedule-info { padding: 20px; }
+      .day-header { font-size: 1.2rem; flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
@@ -39,22 +71,43 @@
   </div>
 
   <div class="page-header">
-    <h1 class="section-title">Workshop Schedule</h1>
+    <h1 class="section-title">📅 Program Schedule</h1>
     <p class="page-subtitle">29th June - 15th July, 2026 | SOA, Odisha, India</p>
   </div>
 
-  <div class="info-message">
-    <div class="info-icon">
-      <i class="fas fa-clock"></i>
+  <div class="schedule-info">
+    <p><i class="fas fa-info-circle"></i> <strong>All sessions will be held online via Microsoft Teams.</strong> Meeting links will be shared with registered participants.</p>
+    <p style="margin-top: 8px;"><i class="fas fa-clock"></i> <strong>Timings:</strong> All sessions are in <strong>IST (Indian Standard Time)</strong>.</p>
+  </div>
+
+  <!-- Day 1 - July 2, 2026 (Confirmed Session) -->
+  <div class="schedule-table">
+    <div class="day-header">
+      <i class="fas fa-calendar-day"></i> Day 1 - July 2, 2026 (Thursday)
+      <span class="confirmed-badge">✅ Confirmed</span>
     </div>
-    <h2 class="info-title">Schedule To Be Announced</h2>
-    <p class="info-text">The detailed Workshop schedule including session timings,<br>speaker slots, and parallel tracks will be updated soon.</p>
     
-    <div class="info-note">
-      <i class="fas fa-envelope" style="margin-right: 10px; color: #ffc107;"></i>
-      <strong>Stay Updated:</strong> Please check back regularly or subscribe to our mailing list at 
-      <strong>programs.cqst@gmail.com</strong> for the latest updates on the Workshop schedule.
+    <div class="schedule-row">
+      <div class="time"><i class="fas fa-clock"></i> 7:30 - 8:00 PM</div>
+      <div class="event">
+        <div class="event-title">
+          Keynote Talk: Prof. Lorenzo Maccone
+          <span class="confirmed-badge">✅ Confirmed</span>
+        </div>
+        <div class="event-speaker">🎤 Speaker: Prof. Lorenzo Maccone</div>
+        <div class="event-location"><i class="fas fa-video"></i> Online (Microsoft Teams)</div>
+      </div>
     </div>
+  </div>
+
+  <!-- More Sessions Coming Soon -->
+  <div class="more-sessions">
+    <i class="fas fa-calendar-plus"></i>
+    <h3>📋 More Sessions Coming Soon</h3>
+    <p>We are finalizing the complete schedule with more distinguished speakers. Please check back regularly for updates.</p>
+    <p style="margin-top: 12px; color: #2c7da0; font-weight: 600;">
+      <i class="fas fa-envelope"></i> For inquiries: programs.cqst@gmail.com
+    </p>
   </div>
 
   <footer class="footer">
