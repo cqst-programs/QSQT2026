@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QSQT2026 - Conference Schedule</title>
+  <title>QSQT2026 - Complete Schedule</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
     
     .navbar { background: white; border-radius: 60px; padding: 12px 24px; margin: 20px 0 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
     .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; list-style: none; }
@@ -24,37 +24,48 @@
     .schedule-info p { font-size: 1rem; color: #555; line-height: 1.6; }
     .schedule-info i { color: #2c7da0; margin-right: 8px; }
     
-    .schedule-table { background: white; border-radius: 24px; overflow: hidden; margin: 30px 0 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .day-header { background: #0b2b44; color: white; padding: 20px; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
-    .day-header i { color: #ffd700; }
+    /* Table Style */
+    .schedule-table-wrapper { background: white; border-radius: 24px; overflow: hidden; margin: 30px 0 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .schedule-table thead { background: #0b2b44; color: white; }
+    .schedule-table th { padding: 16px 14px; text-align: left; font-weight: 700; font-size: 0.95rem; }
+    .schedule-table td { padding: 12px 14px; border-bottom: 1px solid #e8e8e8; vertical-align: middle; }
+    .schedule-table tbody tr:hover { background: #f5f7fa; }
     
-    .schedule-row { display: grid; grid-template-columns: 160px 1fr; border-bottom: 1px solid #e0e0e0; }
-    .schedule-row:hover { background: #f5f5f5; }
-    .time { padding: 20px; font-weight: 600; background: #f8f9fa; border-right: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
-    .time i { color: #2c7da0; }
-    .event { padding: 20px; }
-    .event-title { font-weight: 700; margin-bottom: 5px; }
-    .event-speaker { color: #2c7da0; font-weight: 600; margin-bottom: 3px; }
-    .event-location { color: #666; font-size: 0.85rem; }
+    .col-date { font-weight: 700; color: #0b2b44; min-width: 90px; }
+    .col-time { font-weight: 600; color: #2c7da0; min-width: 80px; }
+    .col-speaker { font-weight: 600; color: #1a2634; }
+    .col-speaker small { font-weight: 400; color: #666; display: block; font-size: 0.75rem; }
+    .col-topic { color: #444; }
+    .col-status { min-width: 70px; text-align: center; }
     
-    .confirmed-badge { display: inline-block; background: #28a745; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-left: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .to-be-announced { color: #ffc107; font-weight: 600; }
+    .confirmed-badge { display: inline-block; background: #28a745; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .special-badge { display: inline-block; background: #ffd700; color: #0b2b44; padding: 2px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 700; margin-left: 6px; }
     
-    .more-sessions { background: white; border-radius: 24px; padding: 40px; margin: 30px 0 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px dashed #cbd5e6; }
-    .more-sessions i { font-size: 3rem; color: #2c7da0; margin-bottom: 20px; }
-    .more-sessions h3 { font-size: 1.5rem; color: #0b2b44; margin-bottom: 10px; }
-    .more-sessions p { color: #666; }
+    .highlight-row { background: #fffdf0 !important; border-left: 3px solid #ffd700; }
+    .highlight-row:hover { background: #fff8e0 !important; }
+    
+    .section-divider { background: #eef3fc; padding: 14px 20px; font-weight: 700; color: #0b2b44; font-size: 1.1rem; border-top: 2px solid #2c7da0; border-bottom: 2px solid #2c7da0; }
+    .section-divider i { color: #2c7da0; margin-right: 10px; }
     
     .footer { text-align: center; padding: 28px 0; color: white; }
     
+    /* Time slot column group */
+    .time-slot { font-weight: 600; color: #2c7da0; font-size: 0.8rem; }
+    
     @media (max-width: 768px) {
-      .schedule-row { grid-template-columns: 1fr; }
-      .time { border-right: none; border-bottom: 1px solid #e0e0e0; }
-      .container { padding: 0 20px; }
+      .container { padding: 0 16px; }
       .page-header { padding: 30px 20px; }
       .section-title { font-size: 1.8rem; }
       .schedule-info { padding: 20px; }
-      .day-header { font-size: 1.2rem; flex-wrap: wrap; }
+      
+      .schedule-table-wrapper { overflow-x: auto; }
+      .schedule-table { font-size: 0.75rem; }
+      .schedule-table th, .schedule-table td { padding: 8px 8px; }
+      .col-date { min-width: 65px; font-size: 0.7rem; }
+      .col-time { min-width: 60px; font-size: 0.7rem; }
+      .col-speaker { font-size: 0.75rem; }
+      .col-topic { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -71,7 +82,7 @@
   </div>
 
   <div class="page-header">
-    <h1 class="section-title">📅 Program Schedule</h1>
+    <h1 class="section-title">📅 Complete Program Schedule</h1>
     <p class="page-subtitle">29th June - 15th July, 2026 | SOA, Odisha, India</p>
   </div>
 
@@ -80,39 +91,409 @@
     <p style="margin-top: 8px;"><i class="fas fa-clock"></i> <strong>Timings:</strong> All sessions are in <strong>IST (Indian Standard Time)</strong>.</p>
   </div>
 
-  <!-- Day 1 - July 2, 2026 (Confirmed Session) -->
-  <div class="schedule-table">
-    <div class="day-header">
-      <i class="fas fa-calendar-day"></i> Day 1 - July 2, 2026 (Thursday)
-      <span class="confirmed-badge">✅ Confirmed</span>
-    </div>
-    
-    <div class="schedule-row">
-      <div class="time"><i class="fas fa-clock"></i> 7:30 - 8:00 PM</div>
-      <div class="event">
-        <div class="event-title">
-          Keynote Talk: Prof. Lorenzo Maccone
-          <span class="confirmed-badge">✅ Confirmed</span>
-        </div>
-        <div class="event-speaker">🎤 Speaker: Prof. Lorenzo Maccone</div>
-        <div class="event-location"><i class="fas fa-video"></i> Online (Microsoft Teams)</div>
-      </div>
-    </div>
-  </div>
+  <!-- ============================================================ -->
+  <!-- COMPLETE SCHEDULE TABLE                                       -->
+  <!-- ============================================================ -->
+  <div class="schedule-table-wrapper">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>📅 Date</th>
+          <th>⏰ Time</th>
+          <th>🎤 Speaker</th>
+          <th>📖 Topic / Session</th>
+          <th>📌 Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ====== JUNE 29, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="5">June 29, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. P. K. Nanda <small>Vice Chancellor, SOA University, Odisha</small></td>
+          <td class="col-topic">Inaugural Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. P. K. Panigrahi <small>Director CQST, SOA University, Bhubaneswar</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Subhash Chaturvedi <small>IISER Bhopal</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Dr. Shreya Banerjee <small>University of Exeter, UK</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Dr. Balakrishnan <small>Institute of Mathematical Sciences</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
 
-  <!-- More Sessions Coming Soon -->
-  <div class="more-sessions">
-    <i class="fas fa-calendar-plus"></i>
-    <h3>📋 More Sessions Coming Soon</h3>
-    <p>We are finalizing the complete schedule with more distinguished speakers. Please check back regularly for updates.</p>
-    <p style="margin-top: 12px; color: #2c7da0; font-weight: 600;">
-      <i class="fas fa-envelope"></i> For inquiries: programs.cqst@gmail.com
-    </p>
-  </div>
+        <!-- ====== JUNE 30, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="5">June 30, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Rajrupa Banerjee <small>Institute of Physics, Bhubaneswar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Suman Chand <small>SOA University, Bhubaneswar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Subhash Chaturvedi <small>IISER Bhopal</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Dr. Abdul Q. Batin <small>SOA University, Bhubaneswar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Dr. Ramita Sarkar <small>Ariel University, Israel</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
 
-  <footer class="footer">
-    <p>© 2026 QSQT2026 Workshop & FDP | Centre for Quantum Science and Technology (CQST), SOA, Odisha, India</p>
-  </footer>
-</div>
-</body>
-</html>
+        <!-- ====== JULY 1, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="6">July 1, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Urbasi Sinha <small>Raman Research Institute (RRI), Bengaluru</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Utpal Roy <small>IIT Patna</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Satyajit KT <small>IMJ Institute of Research, Udupi</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Dr. Ritajit Majumdar <small>IBM India</small></td>
+          <td class="col-topic">Industry Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">3:00 - 4:00 PM</td>
+          <td class="col-speaker">Dr. Kumar Gautam <small>Founder, QRACE &amp; Egreen Quanta</small></td>
+          <td class="col-topic">Industry Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Dr. Ashish Kumar Pati <small>SOA University, Bhubaneswar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 2, 2026 - HIGHLIGHTED ====== -->
+        <tr class="highlight-row">
+          <td class="col-date" rowspan="6">July 2, 2026 <span class="special-badge">⭐ Featured</span></td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Avinash Khare <small>Savitribai Phule Pune University</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Poonam Mehta <small>Jawaharlal Nehru University (JNU), Delhi</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Prabha Mandayam <small>IIT Madras</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Prof. Emanuelle Dalla Torre <small>Bar-Ilan University, Israel</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">3:00 - 4:00 PM</td>
+          <td class="col-speaker">Prof. Emanuelle Dalla Torre <small>Bar-Ilan University, Israel</small></td>
+          <td class="col-topic">Technical Session (Contd.)</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr style="background: #fff8e0;">
+          <td class="col-time" style="font-weight: 700; color: #b8860b;">7:30 - 8:00 PM</td>
+          <td class="col-speaker" style="font-weight: 700;">⭐ Prof. Lorenzo Maccone <small>University of Pavia, Italy</small></td>
+          <td class="col-topic" style="font-weight: 600;">Special Keynote (30 mins)</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span> <span class="special-badge">⭐ Featured</span></td>
+        </tr>
+
+        <!-- ====== JULY 3, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="6">July 3, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Franco Nori <small>University of Michigan, USA &amp; RIKEN, Japan</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Arvind <small>IISER Mohali</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Subhrangshu Dasgupta <small>IIT Ropar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Dr. Ranjit Singh</td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Prof. Shraddha Sharma <small>NIT Rourkela</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">5:30 - 6:30 PM</td>
+          <td class="col-speaker">Dr. Sristy Agrawal</td>
+          <td class="col-topic">Industry Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 4, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="5">July 4, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. R. P. Singh <small>Physical Research Laboratory (PRL), Ahmedabad</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Vivek Vyas <small>IIIT Vadodara</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Nirmalya Ghosh <small>IISER Kolkata</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Mr. Rajendra Prasad <small>CEO, Quality Quest Engineers</small></td>
+          <td class="col-topic">Industry Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Prof. Sougato Bose <small>University College London, UK</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 6, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="6">July 6, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Bhanu Das <small>TCG Crest, Kolkata</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Pankaj Agrawal <small>TCG Crest, Kolkata</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Alok Pan <small>IIT Hyderabad</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Dr. Rajiuddin <small>University of Naples Federico II, Italy</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Prof. Lakshmibala <small>IIT Madras</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">5:30 - 6:30 PM</td>
+          <td class="col-speaker">Prof. Gautam Vemuri</td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 7, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="5">July 7, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Asoka Biswas <small>IIT Ropar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Raymond Ooi <small>University of Malaya, Malaysia</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Roopayan Ghosh <small>IIT Bhubaneswar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Prof. Alex Matzkin <small>CY Cergy Paris University, France</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Prof. Archan Majumdar <small>S.N. Bose National Centre for Basic Sciences (SNBNCBS), Kolkata</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 8, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="4">July 8, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Ray Kuang Lee <small>National Tsing Hua University, Taiwan</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Hiranmaya Mishra <small>NISER Bhubaneswar</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. P. Durganandini <small>Savitribai Phule Pune University</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Dr. Subimal Deb <small>TCG Crest</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 9, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="4">July 9, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Aditi Sen De <small>Harish Chandra Research Institute (HRI), Prayagraj</small></td>
+          <td class="col-topic">Keynote Talk</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Tabish Qureshi <small>Jamia Millia Islamia (JMI), Delhi</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Rakesh Mohan Das <small>Kalinga Institute of Industrial Technology</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Prof. Devendra Mishra <small>Banaras Hindu University (BHU), Varanasi</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 10, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="5">July 10, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Chiranjib Mitra <small>IISER Kolkata</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Biswajyoti Dey <small>University of Pune</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">11:00 AM - 12:00 PM</td>
+          <td class="col-speaker">Prof. Joyee Ghosh <small>IIT Delhi</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">12:00 - 1:00 PM</td>
+          <td class="col-speaker">Prof. Sourin Das <small>IISER Kolkata</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">4:00 - 5:00 PM</td>
+          <td class="col-speaker">Dr. L. Venkata Subramaniam <small>CEO, Qubit Force, Amaravati</small></td>
+          <td class="col-topic">Industry Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+
+        <!-- ====== JULY 11, 2026 ====== -->
+        <tr>
+          <td class="col-date" rowspan="5">July 11, 2026</td>
+          <td class="col-time">9:00 - 10:00 AM</td>
+          <td class="col-speaker">Prof. Sukanta K. Tripathy <small>Berhampur University, Odisha</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="col-time">10:00 - 11:00 AM</td>
+          <td class="col-speaker">Prof. Amit Rai <small>Jawaharlal Nehru University (JNU)</small></td>
+          <td class="col-topic">Technical Session</td>
+          <td class="col-status"><span class="confirmed-badge">✅ Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="
